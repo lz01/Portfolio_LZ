@@ -1,0 +1,501 @@
+---
+title: Schengen visas statistics around the world in 2018
+output:
+  html_document:
+    number_sections: TRUE
+    toc: TRUE
+    code_folding: show
+    theme: readable
+    highlight: tango
+---
+
+<script src="/rmarkdown-libs/kePrint/kePrint.js"></script>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>We are analyzing here the statistics of visas delivered by Schengen countries around the world. We will use two datasets, available on <a href="https://www.kaggle.com">kaggle</a>: one lists visa statistics of Schengen countries consulates around the world in 2017 and 2018 (<a href="https://www.kaggle.com/ma7555/schengen-visa-stats">Schengen visas dataset</a>) and the other one contains <a href="https://www.kaggle.com/theworldbank/world-bank-population-estimates-and-ranking">world population data</a>. I published this analysis as a <a href="https://www.kaggle.com/lamiaz/schengen-visas-geopolitics-revealed">notebook</a> on kaggle as well, so
+if you want to see the R code to perform the analysis, you can find it there.</p>
+<p>A Schengen visa allows a traveller to enter into the Schengen Area, which comprises the following 25 countries:
+Austria, Belgium, the Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Norway, Poland, Portugal, Slovakia, Slovenia, Spain, Sweden and Switzerland.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-2-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>People holding certain citizenships don’t need a Schengen visa to enter the Schengen area, their passport is enough. But most citizenships do.
+There are different types of Schengen visas.
+A uniform visa allows one to enter the Schengen area and stay there for a short time (up to 90 days). Uniform visas can either allow for a single entry or for multiple entries within the visa’s validity period. A consulate can also issue a visa that only allows its holder to be in the country that issued the visa to the exclusion of any other Schengen country (visa with limited territorial validity).</p>
+<p>If a person needs to transit through an airport in the Schengen area before continuing their journey to a destination outside the Schengen area, they will need an airport transit visa (ATV).</p>
+<p>We will look at statistics of visa issuance and refusal across Schengen states and countries asking for visas. We will also look at the distribution of consulates around the world, and how they can be indicators of geopolitical significance.</p>
+</div>
+<div id="analysis-of-visa-and-consular-statistics" class="section level1">
+<h1>Analysis of visa and consular statistics</h1>
+<div id="number-of-visa-applications-per-country" class="section level2">
+<h2>Number of visa applications per country</h2>
+<p>We first look at the number of uniform visa applications per country for the 20 countries that file the highest number of applications.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-4-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Russia is number one with around 3.7 million visa applications in 2018. It is followed by China (2.8 million) and India (1.1 million). In the top 10, we also find smaller countries such as Algeria, Belarus and Morocco, with around 0.7 million each.
+We expect countries with a large population size to ask for more visas than countries with a smaller population. In order to take out this effect, we redo the same analysis, this time normalizing by population size and calculating the number of visa applications per 100.000 people.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-5-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>After taking into account population size, the picture changes. Belarus which was already the fourth country that asked for the most visas, is now the first once we normalize by its population. Small countries like Kosovo, Koweit or Cape verde now also have some of the highest rate of visa applications per 100.000 people. In order to have a better look at them, we can list the 20 countries with the highest rate of visa applications per person.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-6-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+</div>
+<div id="number-of-consulates-per-country" class="section level2">
+<h2>Number of consulates per country</h2>
+<p>Let’s first look at the number of Schengen consulates present in countries around the world. The 20 countries with the highest number of consulates are shown in the figure below.
+<img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-7-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We look again at the number of Schengen consulates present in a country, but this time normalized by the country’s population size. Here we show the countries with the highest number of Schengen consulates per 100.000 people.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-8-1.png" width="\textwidth" style="display: block; margin: auto;" />
+After taking into account population size, european microstates San Marino, Monaco and Andorra are now at the top. These microstates are not technically part of the EU nor the Schengen area, but they have very close relationships with the EU. San Marino and Monaco have an open border with the Schengen area (respectively with Italy and France), which means it is as if they are part of the Schengen area. Andorra doesn’t have an open border, but, given that it is not possible to fly into Andorra, only enter through either Spain or France, it is also de facto in the Schengen area.</p>
+</div>
+<div id="average-number-of-visa-applications-per-consulate" class="section level2">
+<h2>Average number of visa applications per consulate</h2>
+<p>We now look at how the average number of visa applications treated by a consulate varies depending on the country where the consulate is located. Some countries have very busy consulates whereas others have consulates that treat few applications per year.
+We show in the figure below the 20 countries with the highest number of visa applications per consulate.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-9-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Among the countries that have the busiest consulates, we find again countries such as Russia, Belarus, China, India, Algeria, Morocco and Turkey, which are the countries who file the most visa applications.</p>
+<p>But there are also countries that have many consulates that are not very busy.
+We now look at the interplay between the number of Schengen consulates in a country and the average number of visa applications they receive. We choose to only highlight certain countries to make the figure more readable.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-10-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>We find that the number of Schengen consulates in a country depends both on the number of visa applications but also on the geopolitical importance of the country.
+Geopolitical influence can make a Schengen state be present in a country or even have several consulates in it, even if each consulate is treating only a few applications.</p>
+<p>Countries such as Australia, Brazil, Canada, Germany, Israel and Japan all have a large number of consulates considering the number of applications they receive, as they are influent on the world stage.
+The USA, shown in red in the figure, appears as a clear outlier here, a sure sign of its geopolitical importance!</p>
+</div>
+<div id="number-of-schengen-states-with-a-consulate-in-the-country" class="section level2">
+<h2>Number of Schengen states with a consulate in the country</h2>
+<p>Another way to look at it is to find out how many out of the 25 Schengen states have a consular presence in a given country. We expect once again that both the number of visa applications and the geopolitical influence will play a role.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-11-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>There are 11 countries that have more than 20 Schengen states with a consular presence:</p>
+<p>Canada, China, Egypt, India, Israel, Japan, the Russian Federation, Turkey, Ukraine, the United Kingdom and the USA.</p>
+<p>There are 26 countries with 16 to 20 Schengen states with a consular presence:</p>
+<p>Algeria, Argentina, Australia, Bulgaria, Croatia, Cuba, Ethiopia, France, Germany, Indonesia, Iran, Ireland, Kenya, Lebanon, Mexico, Morocco, Nigeria, Pakistan, Romania, Saudi Arabia, Serbia, South Africa, South Korea, Thailand, the United Arab Emirates and Vietnam.</p>
+</div>
+<div id="schengen-states-issuing-the-most-visas" class="section level2">
+<h2>Schengen states issuing the most visas</h2>
+<p>Out of all the Schengen states, which ones issue the most visas? And does this depend on the state’s population as well, with large states issuing more visas than small ones?</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-12-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>France appears as a clear number one here, issuing 3.35 million visas in 2018, almost double the second state, Germany, which issued about 1.84 million visas. There is a great disparity in between states with, on the one hand, France, Germany, Italy and Spain largely on top, all issuing more than 1.5 million visas, and, on the other hand, the ten states at the bottom all issuing less than 200.000 visas in 2018.</p>
+<p>Let’s see now how it varies if we take into account the Schengen state’s population size.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-13-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>When taking into account the state’s population size, the top countries become Finland and the three Baltic states (Lithuania, Estonia and Latvia).</p>
+</div>
+<div id="rate-of-refused-uniform-visas" class="section level2">
+<h2>Rate of refused uniform visas</h2>
+<p>When a person asks for a visa, it is not always accepted. A reason for the refusal is usually communicated to the person, but it can be quite vague. The main reasons usually provided are:</p>
+<ul>
+<li>Not justifying well enough the purpose and condition of your stay</li>
+<li>Not providing a good enough proof of sufficient means</li>
+<li>Being suspected of not intending to return to your home country</li>
+</ul>
+<p>The exact criteria behind these categories, and the way one can make sure not to have their application fall into one, is not always entirely clear. Schengen states are afraid of illegal immigration following a legal entry into the Schengen area, and therefore limit visa issuance for the people they deem most at risk of wanting to illegally emigrate. But refusal rate can also depend on political choices made at the level of the Schengen state to limit visa issuance in general, to a particular country, or to a specific category of people. It is hard to tell, as the criteria and politics behind visa issuance are usually not public, leaving one to speculate.</p>
+<div id="rate-of-refused-uniform-visas-per-recipient-country" class="section level3">
+<h3>Rate of refused uniform visas per recipient country</h3>
+<p>We first look at the refusal rate per recipient country, limiting ourselves to countries that submitted more than 100.000 visa applications in the year.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-14-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Algeria is the country that has the highest refusal rate of visa applications, with 45.5% of applications being denied!
+Four out of the six countries that have the highest refusal rates are in North Africa (Algeria, Egypt, Tunisia and Morocco).</p>
+<p>Let’s remember the lyrics of Cheb hasni, one of the most popular Algerian raï singers, who says in his song “The visa”:</p>
+<p>عولت انا نشوف العزيزة&quot;</p>
+<p>حرام عليكم</p>
+<p>آه غبنتوني</p>
+<p>&quot;عكستوهلي حتي في الڤيزا</p>
+<p>Which roughly translates to :</p>
+<p>&quot;I decided to go see my baby</p>
+<p>Shame on you</p>
+<p>Ah, you hurt me</p>
+<p>You went against me even for the visa&quot;</p>
+<p>Being refused a Schengen visa is a central part of life in many countries.</p>
+</div>
+<div id="rate-of-refused-visas-per-schengen-state" class="section level3">
+<h3>Rate of refused visas per Schengen state</h3>
+<p>We can also look at the average rate of refused visas per issuing state, to see if some Schengen states are more prone to accept or refuse visa applications.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-15-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Malta, Belgium, Portugal and France appear as the states that are the most likely to refuse a visa application. Finland, the three Baltic states and Iceland appear as the states the most likely to accept a visa application.</p>
+<p>The drawback of this analysis is that it looks at visa applications in bulk, without differentiating between visa applications emanating from rich and geopolitically influent countries and those emanating from poorer countries. We just saw that the countries with the highest average refusal rates tend to be poorer and/or have less geopolitical clout. Certain Schengen states may receive more applications from countries that tend to get more visa applications refused on average, and this could alter the results we get.</p>
+<p>In order to address this issue, we can look at, for each recipient country, how the average refusal rates from all Schengen states compare to the refusal rate by one particular state.
+We’re going to examine the top 5 countries from the previous figure: Malta, Belgium, Portugal, France and the Netherlands. We will only look at country-state pairs where the country has applied for more than 100 visas in 2018.</p>
+<p>First let’s look at Malta, Belgium, the Netherlands and Portugal. Each dot represents a country-state pair.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-16-1.png" width="\textwidth" style="display: block; margin: auto;" />
+Malta, Belgium, the Netherlands and Portugal all appear to tend to refuse visa applications more often than the other states, as we see a clear overrepresentation of dots above the diagonal line.</p>
+<p>Let’s now look at France, which we saw earlier is the state issuing the highest number of uniform visas.
+<img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-17-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>France, on the contrary, shows a completely different picture. It doesn’t have a higher refusal rate than its neighbouring Schengen states, it is average or even lower for a few countries. The only reason it appears as one of the states with the highest average refusal rates is that it receives more visa applications from countries that get refused more on average.</p>
+<p>Let’s now look at the countries that had the lowest average refusal rate of visa applications: Finland, Estonia, Lithuania and Latvia. We don’t include Iceland as it only has two consulates.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-18-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Well, it doesn’t seem anymore that Finland and the Baltic states are more accepting than other states! Their rates are more or less on both sides of the diagonal with a few more countries above the diagonal. The reason that they have a higher average acceptance rate is that they tend to receive more applications from countries that tend to get accepted more on average. But in fact they tend to refuse more visa applications than other Schengen states if we look at it for each country.</p>
+<p>A reminder that averages can be misleading when they hide a sampling bias !</p>
+</div>
+<div id="consulates-with-the-worst-refusal-rates" class="section level3">
+<h3>Consulates with the worst refusal rates</h3>
+<p>Which consulates actually have the highest refusal rates?
+We only consider consulates that received at least 10 applications in the year.
+We rank the 10 consulates with the highest refusal rates in 2018.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Schengen state
+</th>
+<th style="text-align:left;">
+Country
+</th>
+<th style="text-align:left;">
+Consulate
+</th>
+<th style="text-align:right;">
+Refusal rate
+</th>
+<th style="text-align:right;">
+Nb applications
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Malta
+</td>
+<td style="text-align:left;">
+ALGERIA
+</td>
+<td style="text-align:left;">
+ALGIERS
+</td>
+<td style="text-align:right;">
+0.868
+</td>
+<td style="text-align:right;">
+3717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:left;">
+CONGO (DEMOCRATIC REPUBLIC)
+</td>
+<td style="text-align:left;">
+LUBUMBASHI
+</td>
+<td style="text-align:right;">
+0.867
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:left;">
+VENEZUELA
+</td>
+<td style="text-align:left;">
+VALENCIA
+</td>
+<td style="text-align:right;">
+0.800
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:left;">
+NIGERIA
+</td>
+<td style="text-align:left;">
+ABUJA
+</td>
+<td style="text-align:right;">
+0.756
+</td>
+<td style="text-align:right;">
+5939
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Netherlands
+</td>
+<td style="text-align:left;">
+CYPRUS
+</td>
+<td style="text-align:left;">
+NICOSIA
+</td>
+<td style="text-align:right;">
+0.737
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Portugal
+</td>
+<td style="text-align:left;">
+BRAZIL
+</td>
+<td style="text-align:left;">
+BELO HORIZONTE
+</td>
+<td style="text-align:right;">
+0.723
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Belgium
+</td>
+<td style="text-align:left;">
+CONGO (DEMOCRATIC REPUBLIC)
+</td>
+<td style="text-align:left;">
+KINSHASA
+</td>
+<td style="text-align:right;">
+0.718
+</td>
+<td style="text-align:right;">
+2289
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sweden
+</td>
+<td style="text-align:left;">
+NIGERIA
+</td>
+<td style="text-align:left;">
+ABUJA
+</td>
+<td style="text-align:right;">
+0.659
+</td>
+<td style="text-align:right;">
+3039
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Finland
+</td>
+<td style="text-align:left;">
+ALGERIA
+</td>
+<td style="text-align:left;">
+ALGIERS
+</td>
+<td style="text-align:right;">
+0.649
+</td>
+<td style="text-align:right;">
+1307
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hungary
+</td>
+<td style="text-align:left;">
+ALGERIA
+</td>
+<td style="text-align:left;">
+ALGIERS
+</td>
+<td style="text-align:right;">
+0.642
+</td>
+<td style="text-align:right;">
+2713
+</td>
+</tr>
+</tbody>
+</table>
+<p>The worst consulate is that of Malta in Algeria, which refuses 86.8% of applications!</p>
+<p>Algeria, Nigeria and the Democratic Republic of Congo all have two consulates each in the list.</p>
+</div>
+</div>
+<div id="share-of-multiple-entries-visas-among-uniform-visas-issued" class="section level2">
+<h2>Share of multiple entries visas among uniform visas issued</h2>
+<p>When a consulate issues a uniform visa, it can give a single entry visa or generously decide to give a multiple entries visa (MEV) that can be reused for subsequent trips within the visa’s validity period.
+How often do consulates decide to issue multiple entries visa? Does this depend on the Schengen state?</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-20-1.png" width="\textwidth" style="display: block; margin: auto;" />
+There is a very high variability in how likely a Schengen state is to issue a multiple entries visa (MEV). Some countries such as Slovenia, Estonia, the Netherlands and Finland have a very high share of MEVs among the visas issued (higher than 89%). Countries such as France, Malta, Iceland, Sweden, the Czech Republic and Norway have a share in between 21% and 31%. That’s quite a large difference!
+But as we saw before for the refusal rate, certain Schengen states receive more visa applications from countries that are refused more on average. The same bias could be at play again for the share of MEVs among visas issued.</p>
+<p>We are going to look at how the share of MEVs issued by a particular Schengen state relates to the average share of MEVs issued by all states to a particular country, like we did earlier for the refusal rate.</p>
+<p>Let’s first look at Slovenia, Estonia, the Netherlands and Finland, the four countries that have the highest average share of MEVs.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-21-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>If Slovenia and the Netherlands are clearly above the diagonal line, issuing a higher share of MEVs than other states, Estonia is on both sides and Finland is clearly below the line. Finland is actually less likely to issue a MEV, compared to other states. The only reason its average share of MEVs is high is that it tends to issue more visas to countries that get more MEVs on average.</p>
+<p>Let’s now look at France, Sweden, the Czech Republic and Norway, some of the countries with the lowest average share of MEVs issued.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-22-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>All four countries are clearly below the line, meaning that they are less likely to issue a MEV than other states, and tend to get more visa applications from countries that get a lower share of MEVs. Both factors explain their low average share of MEVs.</p>
+<p>Finally, let’s look at two interesting states, Spain and Italy.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-23-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>Spain has a few dots on the diagonal, countries for which its share of MEVs is close to other states, but most dots are very low, below 25%. This probably indicates that Spain has decided on a very low rate of MEVs that it applies indiscriminately in most countries.</p>
+<p>Italy is quite different. It has a very high share of MEVs, well above the diagonal line, for countries that tend to get more MEVs on average and it applies a very variable rate of MEVs in other countries.</p>
+<p>Such patterns could indicate that the share of MEVs could be something that is decided at the level of the state through general policies (or quotas) applied in its consulates.</p>
+<p>We can also draw histograms, one for each Schengen state, that show the share of multiple entries visas issued among all uniform visas issued. We add a dashed line for the average share.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-24-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>In this figure, we can once again note that Italy, even though it has a somewhat high average share (72%), applies a very different rate in its various consulates, as we can see from the spread distribution of the histogram.</p>
+</div>
+<div id="relation-between-visa-issuance-rate-and-share-of-mevs" class="section level2">
+<h2>Relation between visa issuance rate and share of MEVs</h2>
+<p>Now, we can look at how the share of MEVs among visas issued relates to the general issuance rate.
+Do Schengen states that tend to issue a higher proportion of multiple entries visas also tend to have a higher issuance rate in general? If such a correlation exists, it could either be because there are Schengen states that are generally more <em>generous</em> or <em>welcoming</em>, or just because they are getting more visa applications from richer, more influent countries.
+Let’s first look at how correlated the two variables are.</p>
+<p>We find that the two variables are indeed correlated (with a correlation of 0.42) meaning that the Schengen states that have a higher average issuance rate are also more likely to give multiple entries visas.</p>
+<p>We can look at it graphically to have a better idea, by plotting the two variables.</p>
+<p><img src="/notes/2019-10-14-trial_files/figure-html/unnamed-chunk-26-1.png" width="\textwidth" style="display: block; margin: auto;" /></p>
+<p>There seems to be a general connection between the two variables. Schengen states which have a higher average issuance rate like Finland, Estonia, Lithuania and Latvia also tend to have a higher average share of MEVs, whereas countries with a lower average issance rate like Malta, France, Portugal or Belgium also tend to have a lower average share of MEVs.</p>
+<p>But the relationship doesn’t hold for all states, with for example the Netherlands, Slovenia and Germany having an average issuance rate but a high share of MEVs, and Sweden, Norway and the Czech Republic issuing fewer MEVs than other states.
+Once again, this means that the policies behind the visa issuance rate and the share of MEVs are different.</p>
+</div>
+<div id="who-asks-for-airport-transit-visas-and-to-go-where" class="section level2">
+<h2>Who asks for airport transit visas and to go where?</h2>
+<p>Finally, we are going to look at a visa category we haven’t considered yet in the analysis, the airport transit visa (ATV) which allows its holder to transit through an airport in the Schengen area without actually entering the country. Which countries ask for the most ATVs?</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Country
+</th>
+<th style="text-align:right;">
+ATVs applied for
+</th>
+<th style="text-align:right;">
+Population
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CUBA
+</td>
+<td style="text-align:right;">
+902
+</td>
+<td style="text-align:right;">
+11489000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INDIA
+</td>
+<td style="text-align:right;">
+548
+</td>
+<td style="text-align:right;">
+1354052000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ALGERIA
+</td>
+<td style="text-align:right;">
+436
+</td>
+<td style="text-align:right;">
+42008000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NIGERIA
+</td>
+<td style="text-align:right;">
+382
+</td>
+<td style="text-align:right;">
+195875000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+USA
+</td>
+<td style="text-align:right;">
+338
+</td>
+<td style="text-align:right;">
+327507000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+GHANA
+</td>
+<td style="text-align:right;">
+291
+</td>
+<td style="text-align:right;">
+29464000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IRAN
+</td>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:right;">
+82012000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+TURKEY
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+81917000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+SENEGAL
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+16294000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+MEXICO
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+130759000
+</td>
+</tr>
+</tbody>
+</table>
+<p>By far, the country that asks for the most airport transit visas is Cuba, and it is even more striking given its smaller population size compared to Nigeria or India.
+Cubans ask for ATVs to the Netherlands, France and Spain. By looking at the flight statistics out of Havana on <a href="https://www.flightstats.com">Flightstats</a>, we find that the only airlines flying out of Havana to Europe are KLM to Amsterdam, Iberia to Madrid, Air France to Paris and Edelweiss to Zurich. Other airlines fly from Havana to the Caribbean, North America, South America or Russia. The restriction on the flights available from Cuba forces cubans to ask for airport transit visas to Spain, France or the Netherlands if they want to travel to somewhere in Europe outside of the Schengen area, to Africa or to Asia.</p>
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<p>We saw that analyzing a public dataset of Schengen visas statistics can actually teach us a lot about the interplay of visa issuance and geopolitics, as well as help us make guesses regarding the policies that Schengen states adopt in the area. Schengen states have a different presence worldwide, issuing visas to many countries or only to a select few, adjusting their uniform visas issuance rate or more partciularly their multiple entries visas isuance rate according to their own policies. We can only make educated guesses, as, in the end, we don’t have access to all the missing data related to visas applications, such as the socio-economic profile of visa applicants. We could only look at data at the scale of countries and consulates.
+I hope you enjoyed this analysis and took away something from it, whether in terms of Schengen policies and visa statistics or drawing figures in R. I sure now have a better understanding of Schengen visas and of how variable their issuance rate can be. It’s a good counterpoint to the direct experience many of us have had, asking for Schengen visas and feeling both stressed and a bit lost at how arbitrary the process of acceptance/refusal seemed from afar.</p>
+</div>
