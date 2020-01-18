@@ -1,0 +1,23 @@
+{
+  "name": "portfolio_lz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lz01/Portfolio_LZ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lz01/Portfolio_LZ/issues"
+  },
+  "homepage": "https://github.com/lz01/Portfolio_LZ#readme",
+  "dependencies": {
+    "auto-prefixer": "^0.4.2",
+    "postcss-cli": "^7.1.0"
+  }
+}
