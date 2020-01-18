@@ -5,5 +5,5 @@ title: About
 
 Hello, I'm Lamia, a data scientist and R enthusiast.
 
-You can find me on [GitHub](https://github.com/lz01).
+You can contact me by email at [first name]zag@gmail.com or find me on [GitHub](https://github.com/lz01).
 
