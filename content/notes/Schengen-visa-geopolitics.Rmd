@@ -72,7 +72,7 @@ A uniform visa allows one to enter the Schengen area and stay there for a short 
 
 If a person needs to transit through an airport in the Schengen area before continuing their journey to a destination outside the Schengen area, they will need an airport transit visa (ATV).
 
-We will look at statistics of visa issuance and refusal across Schengen states and countries asking for visas. We will also look at the distribution of consulates around the world, and how they can be indicators of geopolitical significance.
+We will look at statistics of visa issuance and refusal in 2018 across Schengen states and countries asking for visas. We will also look at the distribution of consulates around the world, and how they can be indicators of geopolitical significance.
 
 
 ```{r, echo = FALSE}
@@ -300,7 +300,7 @@ We find that the number of Schengen consulates in a country depends both on the 
 Geopolitical influence can make a Schengen state be present in a country or even have several consulates in it, even if each consulate is treating only a few applications.
 
 Countries such as Australia, Brazil, Canada, Germany, Israel and Japan all have a large number of consulates considering the number of applications they receive, as they are influent on the world stage.
-The USA, shown in red in the figure, appears as a clear outlier here, a sure sign of its geopolitical importance!
+The USA, shown in red in the figure, appears as a clear outlier here, a sure sign of its geopolitical importance.
 
 ## Number of Schengen states with a consulate in the country
 
@@ -510,7 +510,7 @@ visas2018 %>%
 
 Well, it doesn't seem anymore that Finland and the Baltic states are more accepting than other states! Their rates are more or less on both sides of the diagonal with a few more countries above the diagonal. The reason that they have a higher average acceptance rate is that they tend to receive more applications from countries that tend to get accepted more on average. But in fact they tend to refuse more visa applications than other Schengen states if we look at it for each country.
 
-A reminder that averages can be misleading when they hide a sampling bias !
+A reminder that averages can be misleading when they hide a sampling bias!
 
 
 ### Consulates with the worst refusal rates
@@ -674,7 +674,7 @@ issuance_rate %>%
 	ylim(0,1)
 ```
 
-There seems to be a general connection between the two variables. Schengen states which have a higher average issuance rate like Finland, Estonia, Lithuania and Latvia also tend to have a higher average share of MEVs, whereas countries with a lower average issance rate like Malta, France, Portugal or Belgium also tend to have a lower average share of MEVs. Once again, we saw in our previous analyses that the average issuance rate hides a sampling bias of the countries of visa applicants.
+Schengen states which have a higher average issuance rate like Finland, Estonia, Lithuania and Latvia also tend to have a higher average share of MEVs, whereas countries with a lower average issance rate like Malta, France, Portugal or Belgium also tend to have a lower average share of MEVs. Once again, we saw in our previous analyses that the average issuance rate hides a sampling bias of the countries of visa applicants.
 
 But the relationship doesn't hold for all states, with for example the Netherlands, Slovenia and Germany having an average issuance rate but a high share of MEVs, and Sweden, Norway and the Czech Republic issuing fewer MEVs than other states.
 This means that the policies behind the visa issuance rate and the share of MEVs are different.
